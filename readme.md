@@ -19,26 +19,13 @@ Ensure you have the following programs installed on your machine:
 ## Installation
 
 1. Clone the repository:
-   ```bash
    git clone https://github.com/sanchezdamianj/deliOrderClone.git
 
 2. Navigate to the project folder from your terminal:
-   ```cd app-name
+   - cd app-name
 3. Install the dependencies:
-   ```npm install
-
-
-## Proyect Structure
-deliOrderClone/
-├── assets/             # Static resources like images and fonts
-├── app/                # Source code of the application
-│   ├── components/     # Reusable components
-│   ├── screens/        # App screens
-│   ├── navigation/     # Navigation structure
-│   ├── services/       # Services like API calls
-│   └── index/          # entry file of the app
-    └── layout/       # Root of the app       
-    
+   - npm install
+4. run npx expo start -c (-c to clean your cache)
 
 ## Contributing
 Contributions are welcome! Feel free to open an issue or submit a pull request.

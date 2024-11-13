@@ -11,10 +11,13 @@ const SearchBar = () =>  (
       <View style={styles.searchSection}>
         <View style={styles.searchField}>
           <Ionicons name='search' size={20} style={styles.searchIcon} color={Colors.medium} />
-          <TextInput style={styles.input} placeholder='Restaurants, groceries, dishes'
+          <TextInput 
+            style={styles.input} 
+            placeholder='Restaurants, groceries, dishes'
+            placeholderTextColor={Colors.medium}
           />
         </View>
-        <Link href={'/'} asChild>
+        <Link href={'/(modal)/filter'} asChild>
           <TouchableOpacity style={styles.optionButton}>
             <Ionicons name='options-outline' size={20} color={Colors.primary} />
           </TouchableOpacity>

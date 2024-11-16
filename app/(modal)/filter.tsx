@@ -85,24 +85,27 @@ const Filter = () => {
   const renderItem: ListRenderItem<Category> = ({item, index}) => (
     <View style={styles.row}>
         <Text style={styles.itemText}>{item.name} ({item.count})</Text>
+        
+        <View style={styles.checkboxContainer}>
         <BouncyCheckbox 
             isChecked={items[index].checked}
             fillColor={Colors.primary} 
             useBuiltInState={true}
             unFillColor="#fff"
-            iconStyle={{borderColor: Colors.primary, borderRadius: 4, flex:1}} 
+            iconStyle={{borderColor: Colors.primary, borderRadius: 4}} 
             onPress={()=>{
                 const isChecked = items[index].checked;
 
-                const updatedItems = items.map((item) => {
-                    if(item.name === items[index].name){
-                        item.checked = !isChecked;
+                const updatedItems = items.map((currentItem) => {
+                    if (currentItem.name === item.name) {
+                        return { ...currentItem, checked: !isChecked}; 
                     }
-                    return item;
+                    return currentItem;
                 })
                 setItems(updatedItems)
             }} 
         />
+        </View>
     </View>
   )
 
@@ -191,32 +194,34 @@ const styles = StyleSheet.create({
     },
     itemText:{
         color: Colors.mediumDark,
-
-        // flex: 1
     },
     row: {
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent:'space-between',
         padding:10,
         backgroundColor: '#fff',
     },
     btnContainer: {
         flexDirection: 'row',
-        gap: 12,
-        justifyContent: 'center'
+        gap: 8,
+        justifyContent: 'center',
+        width: '100%'
     },
     outlineButton: {
         borderColor: Colors.primary,
         borderWidth: 0.5,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 8,
-        paddingHorizontal: 4
+        borderRadius: 8
     },
     outlinButtonText: {
         color: Colors.primary,
         fontWeight: 'bold',
         fontSize: 16
+    },
+    checkboxContainer: {
+        alignItems: 'flex-end'
     }
 })
 

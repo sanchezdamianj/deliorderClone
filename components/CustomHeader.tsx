@@ -6,6 +6,7 @@ import React, { useRef } from 'react';
 import { Image, SafeAreaView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import BottomSheet from './BottomSheet';
 
+
 const SearchBar = () =>  (
     <View style={styles.searchContainer}>
       <View style={styles.searchSection}>
@@ -75,7 +76,7 @@ const styles = StyleSheet.create({
     gap: 20,
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 20
+    paddingHorizontal: 16
   },
   bike: {
     width: 30,
@@ -94,7 +95,6 @@ const styles = StyleSheet.create({
   },
   profileButton: {
     backgroundColor: Colors.lightGrey,
-    padding: 10,
     borderRadius: 50
   },
   locationContainer: {
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     gap: 10,
     flex: 1,
-    paddingHorizontal: 20,
+    paddingHorizontal: 16,
     alignItems: 'center',
   },
   searchField: {
@@ -130,7 +130,6 @@ const styles = StyleSheet.create({
     color: Colors.medium
   },
   optionButton: {
-    padding: 10,
     borderRadius: 50
   }
 })

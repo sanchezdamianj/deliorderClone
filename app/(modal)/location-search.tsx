@@ -1,4 +1,5 @@
 import Colors from '@/constants/Colors'
+import { Ionicons } from '@expo/vector-icons'
 import { useNavigation } from 'expo-router'
 import React, { useState } from 'react'
 import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
@@ -16,13 +17,45 @@ const LocationSearch = () => {
   return (
     <View style={{ flex: 1 }}> 
       <GooglePlacesAutocomplete
-        placeholder='Search'
-        onPress={(data, details = null) => {
-          console.log(data, details);
+        placeholder='Search or move the map'
+        textInputProps={{
+          placeholderTextColor: Colors.medium,
+          returnKeyType: "search"
+        }}
+        fetchDetails={true}
+        onPress={(data, details) => {
+          const point = details?.geometry?.location;
+          if(!point) return;
+          setLocation({
+            ...location,
+            latitude: point.lat,
+            longitude: point.lng
+          });
         }}
         query={{
           key: process.env.EXPO_PUBLIC_GOOGLE_API_KEY,
           language: 'en',
+        }}
+        renderLeftButton={
+          () => (
+           <View style={styles.boxIcon}>
+             <Ionicons size={24 } name='search-outline' color={Colors.medium}/>
+           </View>
+          )
+        }
+        styles={{
+          container: {
+            flex: 0
+          },
+          textInput: {
+            backgroundColor: Colors.grey,
+            paddingLeft: 36,
+            borderRadius: 10
+          },
+          textInputContainer: {
+            padding: 8,
+            backgroundColor: '#fff'
+          }
         }}
       />
       <MapView showsUserLocation={true} style={styles.map} region={location} />
@@ -54,7 +87,15 @@ const styles = StyleSheet.create({
     borderRadius: 8
   },
   buttonText: {
-
+    color: '#fff',
+    fontWeight: 'bold',
+    fontSize: 16
+  },
+  boxIcon: {
+    position: 'absolute',
+    left: 16,
+    top: 18,
+    zIndex: 1
   }
 })
 
